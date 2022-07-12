@@ -8,7 +8,7 @@ plugins {
 }
 
 object Version {
-    const val APP = "1.0.0"
+    const val APP = "1.1.0"
     const val JUNIT = "5.8.2"
 }
 

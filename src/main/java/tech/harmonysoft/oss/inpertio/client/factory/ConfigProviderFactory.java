@@ -103,9 +103,11 @@ public interface ConfigProviderFactory {
      * @return                    {@link ConfigProvider} for the {@code PUBLIC} class
      */
     @NotNull
-    <PUBLIC, RAW> ConfigProvider<PUBLIC> build(@NotNull Class<RAW> rawClass,
-                                               @Nullable String configurationPrefix,
-                                               @NotNull Function<RAW, PUBLIC> builder);
+    <PUBLIC, RAW> ConfigProvider<PUBLIC> build(
+            @NotNull Class<RAW> rawClass,
+            @Nullable String configurationPrefix,
+            @NotNull Function<RAW, PUBLIC> builder
+    );
 
     /**
      * <p>
