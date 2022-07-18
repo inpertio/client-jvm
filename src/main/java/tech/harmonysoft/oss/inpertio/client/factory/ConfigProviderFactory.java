@@ -6,6 +6,7 @@ import tech.harmonysoft.oss.inpertio.client.ConfigPrefix;
 import tech.harmonysoft.oss.inpertio.client.ConfigProvider;
 import tech.harmonysoft.oss.inpertio.client.event.ConfigEventManager;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -57,7 +58,7 @@ public interface ConfigProviderFactory {
      * </p>
      * <p>
      *     If we need to react on changes either in {@code RAW} class or other {@link ConfigProvider},
-     *     {@link #build(Function, ConfigProvider[])} can be used for that. However, it's necessary to wrap
+     *     {@link #build(Collection, Function)} can be used for that. However, it's necessary to wrap
      *     target {@code RAW} type into {@link ConfigProvider}. This method allows to do that.
      * </p>
      *
@@ -135,13 +136,13 @@ public interface ConfigProviderFactory {
      *     exception in runtime
      * </p>
      *
-     * @param builder     target config builder
      * @param providers   underlying config providers
+     * @param builder     target config builder
      * @param <T>         resulting config type
      * @return            config provider for the target type
      */
     @NotNull
-    <T> ConfigProvider<T> build(@NotNull Function<Source, T> builder, @NotNull ConfigProvider<?> ... providers);
+    <T> ConfigProvider<T> build(@NotNull Collection<ConfigProvider<?>> providers, @NotNull Function<Source, T> builder);
 
     /**
      * <p>
@@ -150,8 +151,8 @@ public interface ConfigProviderFactory {
      * </p>
      * <pre>
      *     configs:
-     *     root.lvl1.prop1 = value1
-     *     root.lvl2.lvl3.prop2 = value2
+     *     root.level1.prop1 = value1
+     *     root.level2.level3.prop2 = value2
      * </pre>
      * <pre>
      *     class MyConfig {
@@ -161,8 +162,8 @@ public interface ConfigProviderFactory {
      * </pre>
      * <pre>
      *     Map&lt;String, String&gt; mappings = new HashMap&lt;&gt;();
-     *     mappings.put("prop1", "root.lvl1.prop1");
-     *     mappings.put("prop2", "root.lvl2.lvl3.prop2");
+     *     mappings.put("prop1", "root.level.prop1");
+     *     mappings.put("prop2", "root.level2.level3.prop2");
      *     factory.build(mappings, MyConfig.class);
      * </pre>
      *

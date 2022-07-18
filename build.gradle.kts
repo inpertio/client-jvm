@@ -8,7 +8,7 @@ plugins {
 }
 
 object Version {
-    const val APP = "1.1.0"
+    const val APP = "1.2.0"
     const val JUNIT = "5.8.2"
 }
 
@@ -21,6 +21,10 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains:annotations:23.0.0")
+}
+
+tasks.compileJava {
+    options.release.set(8)
 }
 
 tasks.javadoc.configure {
