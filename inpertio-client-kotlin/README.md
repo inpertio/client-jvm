@@ -1,0 +1,1 @@
+Assumes that config classes are defined in Kotlin. Knows how to create them

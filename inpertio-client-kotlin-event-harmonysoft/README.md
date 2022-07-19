@@ -1,0 +1,1 @@
+Binds event management to `harmonysoft-event-bus`. Note that this mode is defined in terms of `harmonysoft-event-bus-api`, it's necessary to have an implementation in classpath as well, e.g. `harmonysoft-event-bus-guava`
