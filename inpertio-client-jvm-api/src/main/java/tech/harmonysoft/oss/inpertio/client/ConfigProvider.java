@@ -64,4 +64,29 @@ public interface ConfigProvider<T> {
      */
     @NotNull
     T probe();
+
+    /**
+     * Creates a config provider which always returns given config.
+     *
+     * @param config    config to expose
+     * @return          config provider around the given config
+     * @param <T>       config type
+     */
+    static <T> ConfigProvider<T> fixed(T config) {
+        return new ConfigProvider<T>() {
+            @Override
+            public @NotNull T getData() {
+                return config;
+            }
+
+            @Override
+            public void refresh() {
+            }
+
+            @Override
+            public @NotNull T probe() {
+                return getData();
+            }
+        };
+    }
 }
