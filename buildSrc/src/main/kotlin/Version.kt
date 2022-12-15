@@ -1,6 +1,6 @@
 object Version {
 
-    const val APP = "1.3.0"
+    const val APP = "1.5.0"
 
     const val JETBRAINS_ANNOTATIONS = "23.0.0"
     const val JAVAX_INJECT = "1"
